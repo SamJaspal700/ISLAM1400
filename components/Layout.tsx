@@ -48,7 +48,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeSection, onNavig
       </nav>
 
       {/* Main Content Area */}
-      <main className="max-w-md mx-auto md:max-w-3xl md:p-10 pt-safe-top min-h-screen">
+      <main className="max-w-md mx-auto md:max-w-3xl md:p-10 pt-safe-top min-h-screen safe-area-bottom">
          
          {/* Mobile Top Header */}
          <div className="md:hidden sticky top-0 bg-[#F1F5F9]/90 backdrop-blur-xl z-40 px-6 py-4 flex justify-between items-center mb-2 transition-all">
@@ -64,21 +64,21 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeSection, onNavig
             </div>
          </div>
         
-        <div className="px-5 pb-8 md:px-0 md:pb-10">
+        <div className="px-4 pb-8 md:px-0 md:pb-10">
             {children}
         </div>
       </main>
 
-      {/* Mobile Bottom Navigation - Minimal Floating Pill */}
-      <div className="fixed bottom-8 left-0 right-0 md:hidden z-50 pointer-events-none flex justify-center">
-          <nav className="pointer-events-auto bg-white/90 text-slate-600 rounded-full shadow-[0_20px_60px_-15px_rgba(0,0,0,0.25)] flex justify-between items-center px-8 h-16 backdrop-blur-xl border border-white/50 w-auto gap-8 ring-1 ring-slate-900/5">
+      {/* Mobile Bottom Navigation - Floating Pill */}
+      <div className="fixed bottom-6 left-0 right-0 md:hidden z-50 pointer-events-none flex justify-center px-4 safe-area-bottom">
+          <nav className="pointer-events-auto bg-white/95 text-slate-600 rounded-[2rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.25)] flex justify-between items-center px-6 h-18 py-4 backdrop-blur-xl border border-white/50 w-full max-w-sm gap-4 ring-1 ring-slate-900/5">
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
               return (
                 <button
                     key={item.id}
                     onClick={() => onNavigate(item.id)}
-                    className={`relative flex items-center justify-center transition-all duration-300 ${
+                    className={`relative flex-1 flex items-center justify-center transition-all duration-300 ${
                     isActive 
                         ? 'scale-110' 
                         : 'text-slate-400 hover:text-slate-600'
@@ -87,7 +87,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeSection, onNavig
                 >
                     <div className="flex flex-col items-center gap-1">
                         <item.icon size={26} strokeWidth={isActive ? 2.5 : 2} fill={isActive ? "currentColor" : "none"} />
-                        {isActive && <div className="w-1 h-1 rounded-full absolute -bottom-2" style={{ background: 'var(--primary)' }} />}
+                        {isActive && <div className="w-1 h-1 rounded-full absolute -bottom-2.5" style={{ background: 'var(--primary)' }} />}
                     </div>
                 </button>
               );
