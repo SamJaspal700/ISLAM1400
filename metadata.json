@@ -1,0 +1,7 @@
+{
+  "name": "ISLAM1400",
+  "description": "The ultimate Muslim lifestyle app featuring flawless Salah tracking, Quran, Prophetic Stories, and AI guidance.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
